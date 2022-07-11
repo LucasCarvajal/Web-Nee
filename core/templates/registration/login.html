@@ -1,0 +1,77 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block js %}
+{% endblock %}
+{% block css %}
+{% endblock %}
+{% block contenido %}
+{% load crispy_forms_tags %}
+<br>
+<br>
+<br>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso al sistema</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+
+                    <h2>Ingrese tus Credenciales</h2>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+
+                        <input type="submit" value="ingresar">
+
+                    </form>
+
+
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                    {% if messages %}
+                    {% for m in messages%}
+                    <script>
+                        swal.fire({
+                            "title": "Felicitaciones",
+                            "text": "{{m}}",
+                            "icon": "success"
+                        })
+                    </script>
+                    {% endfor %}
+                    {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+</body>
+
+</html>
+
+
+
+<!-- pie de pagina-->
+<footer>
+    <div class="pie-pagina">
+        <p>Web-NEE estudiantes Duoc Uc</p>
+    </div>
+</footer>
+<script src="dist/js/lightbox-plus-jquery.min.js"></script>
+
+</body>
+
+</html>

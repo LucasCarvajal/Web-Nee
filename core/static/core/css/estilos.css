@@ -1,0 +1,40 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* el padding que se establece sera parte de las cajas*/
+}
+
+h1 {
+    float: left;
+}
+
+
+section{
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.bienvenida{
+    text-align: center;
+    font-family: cursive;
+}
+
+footer{
+    font-family: cursive;
+    text-align: center;
+    height: 100px;
+    font-size: 15px;
+}
+
+.cuerpo{
+    text-align: center;
+    font-family: cursive;
+}
+
+.carrusel{
+    width: 100px;
+    height: 100px;
+
+}

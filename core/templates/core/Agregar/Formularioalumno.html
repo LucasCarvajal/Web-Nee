@@ -1,0 +1,95 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block js %}
+{% endblock %}
+{% block css %}
+{% endblock %}
+{% block contenido %}
+{% load crispy_forms_tags %}
+<br>
+<br>
+<br>
+
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <form action="" class="" method="post" >
+                    <br>
+                    <h2>Agregar Alumno</h2>
+                    {% csrf_token %}
+                    <label for="formGroupExampleInput">Nombres</label>
+                    <input type="text" class="form-control" name="nombre">
+                    <br>
+                    <label for="formGroupExampleInput">Apellidos</label>
+                    <input type="text" class="form-control" name="apellido">
+                    <br>
+                    <label for="formGroupExampleInput">Edad</label>
+                    <input type="number" class="form-control" name="edad">
+                    <br>
+
+                    <label for="formGroupExampleInput">Escuela</label>
+                    <select id="escuelas" name="escuelas" class="form-control" id="exampleFormControlSelect1" onchange="seleccionarCurso()">
+                        <option value="-1" disabled selected>Selecciona una Escuela</option>
+                    </select>
+                    <br>
+                    <label for="formGroupExampleInput">Curso</label>
+                    <select id="cursos" class="form-control" id="exampleFormControlSelect2" name="cursos">
+                        <option value="" selected="selected">Selecciona un curso</option>
+                        
+                    </select>
+                    <br>
+                    <label for="formGroupExampleInput">Apoderado</label>
+                    <select name="apoderado" class="form-control" id="exampleFormControlSelect3" id="apoderado" onchange="seleccionarApoderado()">
+                        <option value="">selecionar apoderado</option> 
+                        {% for a in apoderado %}
+                        <option value="{{a.0}}">{{a.1}}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                <div class="d-flex justify-content-center">
+                    <input type="reset" value="Cancelar" class="btn btn-secondary">
+                    &nbsp; &nbsp; &nbsp;
+                    <button type="submit" id="btnEnviar" class="btn btn-primary">Enviar</button>
+                </div>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                {% if messages %}
+                    {% for m in messages%}
+                        <script>
+                            swal.fire({
+                                "title": "Felicitaciones",
+                                "text": "{{m}}",
+                                "icon": "success"
+                            })
+                        </script>
+                    {% endfor %}
+                {% endif %}
+                
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+<!-- pie de pagina-->
+<footer>
+    <div class="pie-pagina">
+        <p>Web-NEE estudiantes Duoc Uc</p>
+    </div>
+</footer>
+<script src="jquery.js"></script>
+<script src="jquery.chained.js"></script>
+<script src="dist/js/lightbox-plus-jquery.min.js"></script>
+<script src="../../../static/core/js/funciones.js"></script>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,113 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block js %}
+{% endblock %}
+{% block css %}
+{% endblock %}
+{% block contenido %}
+{% load crispy_forms_tags %}
+  
+
+
+<script>
+    function eliminar_Establecimiento(id_escuela){
+        Swal.fire({
+            "title":"¿Estas Seguro?",
+            "text":"Se eliminara esto y esto",
+            "icon": "question",
+            "showCancelButton": true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, Eliminar"
+        })
+        .then(function(result) {
+            if(result.isConfirmed) {
+                window.location.href = "/eliminar_Establecimiento/"+id_escuela
+            }
+        })
+    }  
+</script>
+<br>
+<br>
+<br>
+<div class="col-1 col-md-10 offset-md-1">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex justify-content-back">
+                &nbsp; &nbsp; &nbsp; 
+                <a href="{% url 'home' %}"  class="btn btn-secondary">HOME</a>
+                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; 
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
+                &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; 
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
+                &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
+                &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <a href="{% url 'formularioescuela' %}"  class="btn btn-success">AGREGAR ESCUELA</a> 
+            </div>
+          
+            <h2> Listado Establecimientos </h2>
+            <hr>
+            <table class="table table-striped table-hover table-responsive-sm">
+                <tr>
+                    <th>Logo</th>
+                    <th>Nombre Establecimiento </th>
+                    <th>Cupos totales</th>
+                    <th>descripción</th>
+                    <th>Opciones</th>
+                </tr>
+
+                {% for p in escuela %}
+                <tr>
+                    <td>
+                        <img src="{{ p.imagen.url }}" width="200" height="200">
+                    </td>
+                    <td>{{p.nombre_escuela | title }}</td>
+                    <td>{{p.cupos_totales }}</td>
+                    <td>{{p.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'modificar_Establecimiento' p.id_escuela %}" class="btn btn-info ">Modificar</a> 
+                    </td>
+
+                    <td>
+                    <a href="#" onclick="eliminar_Establecimiento({{p.id_escuela}})" class="btn btn-danger ">Eliminar</a>  
+                    </td>
+                    
+
+                {% endfor %}
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                {% if messages %}
+                    {% for m in messages%}
+                        <script>
+                            Swal.fire({
+                                "title": "Felicitaciones",
+                                "text": "{{m}}",
+                                "icon": "success"
+                            })
+                        </script>
+                    {% endfor %}
+                {% endif %}
+                </tr>
+                
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+<!-- pie de pagina-->
+<footer>
+    <div class="pie-pagina">
+        <p>Web-NEE estudiantes Duoc Uc</p>
+    </div>
+</footer>
+<script src="dist/js/lightbox-plus-jquery.min.js"></script>
+
+</body>
+
+</html>

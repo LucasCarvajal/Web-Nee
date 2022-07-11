@@ -1,0 +1,68 @@
+#formulario{
+    background:rgb(42, 179, 42);
+    padding: 45px;
+}
+
+.form-titulo{
+    background: rgb(69, 82, 80);
+    color: #876;
+    padding: 25px;
+    text-align: center;
+    font-family: cursive;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: solid 4px tan;
+}
+.form-registro{
+    width: 95%;
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    border-radius: 10px ;
+}
+.contenedor-imp{
+    padding: 10px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+input {
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: solid 1px gray;
+}
+
+.col-3{
+    width: 30%;
+}
+
+.col-100{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.col-300{
+    width: 100%;
+    height: 100px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-enviar{
+    background: green;
+    color: ivory;
+    margin:auto;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.btn-cancelar{
+    background: red;
+    color: ivory;
+    margin:auto;
+    margin-top: 15px;
+    cursor: pointer;
+}

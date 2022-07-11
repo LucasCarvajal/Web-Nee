@@ -1,0 +1,52 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block js %}
+{% endblock %}
+{% block css %}
+{% endblock %}
+{% block contenido %}
+{% load crispy_forms_tags %}
+<br>
+<br>
+<br>
+
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <form action="" class="" method="post" >
+                    <br>
+                    <h2>Modificar Curso</h2>
+                    
+                    {% csrf_token %}
+                    {{ formpfs | crispy }}
+                    <br>
+                <div class="d-flex justify-content-center">
+                    <input type="reset" value="Cancelar" class="btn btn-secondary">
+                    &nbsp; &nbsp; &nbsp;
+                    <button type="submit" id="btnEnviar" class="btn btn-primary">Modificar</button>
+                </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+<!-- pie de pagina-->
+<footer>
+    <div class="pie-pagina">
+        <p>Web-NEE estudiantes Duoc Uc</p>
+    </div>
+</footer>
+<script src="dist/js/lightbox-plus-jquery.min.js"></script>
+
+</body>
+
+</html>
+
+
